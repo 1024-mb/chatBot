@@ -1,0 +1,9 @@
+Close IntelliJ.
+
+Delete .idea/ and all *.iml files.
+
+Re-open IntelliJ → Open Project → select pom.xml.
+
+When prompted, choose Open as Project (Maven).
+
+Wait for indexing & Maven sync 🔄.
