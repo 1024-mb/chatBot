@@ -13,10 +13,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.*;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.net.URLEncoder;
+import java.net.*;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
 import java.util.stream.Collectors;
 
 
@@ -40,15 +40,16 @@ public class wikipediaAPI {
             String urlStr = "https://en.wikipedia.org/w/api.php?action=query&list=search&srsearch="
                     + URLEncoder.encode(pageTitle, "UTF-8") + "&format=json";
 
-            HttpURLConnection conn = (HttpURLConnection) new URL(urlStr).openConnection();
-            conn.setRequestProperty("User-Agent", "Mozilla/5.0");
+            HttpClient client = HttpClient.newHttpClient();
 
-            String json;
-            try (BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()))) {
-                json = in.lines().collect(Collectors.joining());
-            }
+            HttpRequest httpRequest = HttpRequest.newBuilder()
+                    .uri(URI.create(urlStr))
+                    .GET()
+                    .build();
 
-            JSONObject obj = new JSONObject(json);
+            HttpResponse<String> httpResponse =  client.send(httpRequest, HttpResponse.BodyHandlers.ofString());
+
+            JSONObject obj = new JSONObject(httpResponse);
             JSONArray searchResults = obj.getJSONObject("query").getJSONArray("search");
 
             if (!searchResults.isEmpty()) {
@@ -65,6 +66,8 @@ public class wikipediaAPI {
                 urlStr = "https://en.wikipedia.org/w/api.php?action=query&list=search&srsearch="
                         + URLEncoder.encode(pageTitle, "UTF-8") + "&format=json";
 
+
+                /*
                 conn = (HttpURLConnection) new URL(urlStr).openConnection();
                 conn.setRequestProperty("User-Agent", "Mozilla/5.0");
 
@@ -73,8 +76,17 @@ public class wikipediaAPI {
                     json = in.lines().collect(Collectors.joining());
                 }
 
-                obj = new JSONObject(json);
-                searchResults = obj.getJSONObject("query").getJSONArray("search");
+                 */
+
+                HttpRequest newRequest = HttpRequest.newBuilder()
+                        .uri(URI.create(urlStr))
+                        .GET()
+                        .build();
+
+                HttpResponse<String> response = client.send(newRequest, HttpResponse.BodyHandlers.ofString());
+                JSONObject newObj = new JSONObject(response);
+
+                searchResults = newObj.getJSONObject("query").getJSONArray("search");
 
                 if (!searchResults.isEmpty()) {
                     JSONObject firstResult = searchResults.getJSONObject(0);
@@ -167,6 +179,8 @@ public class wikipediaAPI {
             System.out.println("Error: Unable to read data from the file");
             logger.error("IOException ", e);
             return;
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
         }
     }
 

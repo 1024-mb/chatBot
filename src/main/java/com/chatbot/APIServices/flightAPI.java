@@ -10,6 +10,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.net.MalformedURLException;
+import java.net.URI;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
 import java.util.Scanner;
 
 import java.io.BufferedReader;
@@ -140,22 +144,15 @@ public class flightAPI {
                         "&dep_iata=" + airportCodeDeparture;
             }
 
-            URL url = new URL(urlString);
 
-            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-            conn.setRequestMethod("GET");
+            HttpRequest httpRequest = HttpRequest.newBuilder()
+                    .uri(URI.create(urlString))
+                    .GET()
+                    .build();
 
-            String inputLine;
-            BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+            HttpClient httpClient = HttpClient.newHttpClient();
 
-            while ((inputLine = in.readLine()) != null) {
-                content.append(inputLine.trim());
-            }
-
-            in.close();
-            conn.disconnect();
-
-            JSONObject root = new JSONObject(content.toString());
+            HttpResponse<String> response = httpClient.send(httpRequest, HttpResponse.BodyHandlers.ofString());            JSONObject root = new JSONObject(response.toString());
 
             // Navigate to timelines
 
@@ -298,6 +295,9 @@ public class flightAPI {
         catch(IOException e) {
             System.out.println("I/O Operation Failed");
             logger.error("Error in IO Operations ", e);
+        } catch (InterruptedException e) {
+            System.out.println("Interrupted");
+            logger.error("Error in getting site data  ", e);
         }
 
 

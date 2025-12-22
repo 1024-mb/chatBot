@@ -7,3 +7,14 @@ Re-open IntelliJ → Open Project → select pom.xml.
 When prompted, choose Open as Project (Maven).
 
 Wait for indexing & Maven sync 🔄.
+
+
+{
+  "routes" : [ {
+    "duration" : "3022s",
+    "distanceMeters" : 26382,
+    "polyline" : {
+      "encodedPolyline" : "_n`GcezxR}@JbBzOAHEBiBPr@vGAv@i@lE?XHj@yAr@{Az@}BhB_BtAeAv@o@\\kAt@wA\\o@AeABmBOu@GwDSg@GQGgAIaCEs@Ds@Li@JuAn@{A~@GVBp@Lh@BVB|AI^{@dCFzANbA\\xA@Pl@~@bArEf@fBtAjG|@nEJ`AB~@?n@IfBMh@KJUfAgBzDc@rA[|AQxA@Vt@zHF`BCn@S|A_@hAWh@y@hAiAlA_CzBeApAgAjBs@|A{@rCsB`Hu@xB}ClHy@~AgJtSg@|A{@hEUnBm@zBg@jAe@`Ao@`AiFdGyAzAeDxD{BdCqDdEsAtAOTyC`Do@v@YVe@n@gCnCqHzGeEdEcB~A{AvAgBzAa@`@qBbB}@~@sChCyBzBwAfBiAfBG`@Wf@M\\c@tAW~@YdB?z@Lt@Tl@^f@lCfCR`@F`@?n@Kd@a@x@_@b@aAt@w@f@eB~@}C|AcC~Aq@h@i@\\kBxAeBfBwAdBmHxMmD|FqCvD_E|DmBbBiEtCwC`B{CtA{EdBaEfA}B`@wDd@oUjBcGt@iHhA_HhAgXdFyLvBcCb@aDn@uF|@iGx@qLx@aLv@uALqDT]?cJl@yHb@gOfA[FaHV}HDkDAwIJaHX}EZsFj@sEn@uNhCuNnBaFb@aCP}GVaBFiC@[A{EBkCFmM@eJHoE@mDF_IDcDH}E\\_BRiCb@{Dx@{DdAaB^gM~C}Cd@wC^}DZaBHkEFsSH{G?y@Hy@Tu@VeATSB_KJ{@@iBLm@Nq@Vy@d@_BpA[HSBo@GwFcBa@UoCwDw@qAWYgCwAi@e@YOsBe@w@Ce@BuPjDyJxB{EdAaAZaBp@eAZkAN_ADcEBw@BcBb@i@PoGjDsKdFs@Rw@Je@EaA]]A]Fu@V[BQCWc@uG}OOe@UY]QgA[eGg@SDq@ViHtEoAdAWNKDOP]ZuAfBcAdB{AhDyBpGcA|DqBtLKr@e@rCKbAChABjAHx@JFRx@hC|Ff@tAdABjEmBzBcAXCJ?~BkApDwAfHuDrA_Ax@u@TYx@yA\\u@Nq@Hq@FwBJcA\\iA`@_Ab@a@j@_@lAm@xJ_En@WdCoApC{AhA{@d@Uz@k@rCaB"
+    }
+  } ]
+}

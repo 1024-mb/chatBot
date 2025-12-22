@@ -133,7 +133,6 @@ public class App {
 
                         }
 
-
                         else if (command.contains("news") || command.contains("headlines")) {NEWS_API.getNews();}
 
                         else if (command.contains("weather") || command.contains("whether")) {WEATHER_API.getData();}

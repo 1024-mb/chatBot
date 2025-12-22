@@ -2,6 +2,7 @@ package com.chatbot.audioServices;
 
 import java.util.Arrays;
 import java.util.List;
+import com.chatbot.util.speak;
 
 public class numConverter {
     public double getNumbers(String input) {
@@ -16,22 +17,30 @@ public class numConverter {
                         "thirty","forty","fifty","sixty","seventy","eighty","ninety",
                         "hundred","thousand","million","billion","trillion"
                 );
+        boolean point = false;
 
 
         if(input != null && !input.isEmpty()) {
             input = input.replaceAll("-", " ");
-            input = input.toLowerCase().replaceAll(" and", " ");
+            input = input.toLowerCase().replaceAll("and", " ");
             String[] splittedParts = input.trim().split("\\s+");
 
             for(String str : splittedParts) {
                 if(!allowedStrings.contains(str)) {
                     isValidInput = false;
                     return 0.0;
-
+                }
+                if(str.equals("point")) {
+                    System.out.println("Sorry - I can't process decimals");
+                    speak.speak("Sorry - I can't process decimals.");
+                    break;
                 }
             }
+
             if(isValidInput) {
-                for(String str : splittedParts) {
+                for(int count=0; count< splittedParts.length; count++) {
+                    String str = splittedParts[count];
+
                     if(str.equalsIgnoreCase("zero")) {
                         result += 0;
                     }

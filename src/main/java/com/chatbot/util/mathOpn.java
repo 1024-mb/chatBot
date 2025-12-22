@@ -5,17 +5,21 @@ import com.chatbot.audioServices.numConverter;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class mathOpn {
     private static final numConverter CONVERTER = new numConverter();
 
     public void computeMath(String command) {
-
         command = command.replaceAll("by", "");
         command = command.replaceAll("of", "");
         command = command.replaceAll("to", "");
         command = command.replaceAll("from", "");
         command = command.replaceAll("calculate", "");
+        command = command.replaceAll("what", "");
+        command = command.replaceAll("is", "");
+        command = command.replaceAll("the", "");
 
 
         String[] numberOps = {"divide", "over",
@@ -26,9 +30,9 @@ public class mathOpn {
 
         ArrayList<String> operation = new ArrayList<>();
 
-        for (int count = 0; count < numberOps.length; count++) {
-            if (command.contains(numberOps[count])) {
-                operation.add(numberOps[count]);
+        for (String numberOp : numberOps) {
+            if (command.contains(numberOp)) {
+                operation.add(numberOp);
             }
         }
 
@@ -36,22 +40,26 @@ public class mathOpn {
         Double[] operands = {0.0, 0.0};
 
         if (operation.size() == 1) {
-            int count = 0;
-            for (String item : numbers) {
-                item = item.toLowerCase();
+            String performed = operation.get(0);
 
-                if (!item.equals("zero")) {
-                    if (CONVERTER.getNumbers(item) > 0.0 && count < 2) {
-                        operands[count] = CONVERTER.getNumbers(item);
-                        count++;
-                    }
-                }
+            String firstNumber = command.substring(0, command.indexOf(performed)).trim();
+            String secondNumber = command.substring(command.indexOf(performed) + performed.length()+1).trim();
+
+            try {
+                operands[0] = CONVERTER.getNumbers(firstNumber);
+                operands[1] = CONVERTER.getNumbers(secondNumber);
             }
+            catch(Exception e) {
+                System.out.println("Sorry - I'm having trouble processing this");
+                speak.speak("Sorry - I'm having trouble processing this");
+                return;
+            }
+
             String result = "";
 
             DecimalFormat df = new DecimalFormat("#.##");
 
-            switch (operation.get(0)) {
+            switch (performed) {
                 case "multiply", "times", "multiplied" -> result = (operands[0] + " * " +
                         operands[1] + " = " + df.format(operands[0] * operands[1]));
 
@@ -81,7 +89,8 @@ public class mathOpn {
                 speak.speak(operands[0] + " " + operation.get(0) + " " + operands[1] +
                         " is " + formatResult);
 
-            } catch (Exception e) {
+            }
+            catch (Exception e) {
                 result = result.split(" ")[result.split(" ").length - 1];
 
                 if (result.equals("0")) {
@@ -98,5 +107,6 @@ public class mathOpn {
 
         }
     }
+
 
 }
