@@ -1,6 +1,6 @@
 # chatBotNlp
 
-A Java-based chatbot/assistant project that integrates offline speech recognition (VOSK) with several API services for weather, news, translation, Wikipedia, WolframAlpha, and flight information.
+A Java-based chatbot/assistant project that integrates offline speech recognition (VOSK) with several API services for weather, news, translation, Wikipedia, general knowledge, and flight information.
 
 This repository contains the project source, included VOSK model assets, and helper utilities for audio, text processing, and external API integrations.
 
