@@ -1,4 +1,3 @@
-```markdown
 # chatBotNlp
 
 A Java-based chatbot/assistant project that integrates offline speech recognition (VOSK) with several API services for weather, news, translation, Wikipedia, WolframAlpha, and flight information.
@@ -35,7 +34,6 @@ Open a PowerShell terminal in the project root (`pom.xml` location) and run:
 
 ```powershell
 mvn clean package
-```
 
 This will compile sources and produce build artifacts under `target/`.
 
@@ -98,21 +96,11 @@ If you'd like to contribute:
 - Fork the repository, create a branch for your feature/fix, and submit a pull request.
 - Add tests for bug fixes and new features when appropriate.
 
-## License
-
-No license is specified in this repository. Add a `LICENSE` file if you want to clarify reuse permissions (MIT is a common permissive choice).
 
 ## Acknowledgements
 
 - VOSK — offline speech recognition library and models
 - Any external API providers used by the service wrappers
 
----
 
-If you'd like, I can:
 
-- Add example configuration files for API keys,
-- Create a runnable sample that plays with the VOSK model and prints recognized text,
-- Or open a PR with the README and example run scripts.
-
-```
