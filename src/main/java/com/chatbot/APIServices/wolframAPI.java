@@ -29,7 +29,7 @@ public class wolframAPI {
             String queryFormatted = query.replaceAll(" ", "%20");
 
             String urlString = "https://api.wolframalpha.com/v2/query?appid=" +
-                    "K8J32RHU7" + "L&input=" +
+                    System.getenv("APPID"); + "L&input=" +
                     queryFormatted + "&includepodid=Result&format=plaintext";
 
             //IOException here
