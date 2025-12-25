@@ -21,7 +21,7 @@ import com.sun.speech.freetts.VoiceManager;
 public class translateAPI {
 
     private static final Logger logger = LoggerFactory.getLogger(weatherAPI.class);
-    private static final String TRANSLATE_KEY = "AIzaSyCy55e9txk5TeRJuTZ0a0HEzGui-wVZT3w";
+    private static final String TRANSLATE_KEY = System.getenv("TRANSLATE");;
     private static speak speak = new speak();
 
     public void get_translation(String text, String langIn) {
