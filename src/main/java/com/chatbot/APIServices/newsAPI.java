@@ -18,7 +18,7 @@ import java.net.URL;
 import java.util.ArrayList;
 
 public class newsAPI {
-    private static final String API_KEY_NEWS = "pub_924e0b93858445d5a68f32318e67ba42";
+    private static final String API_KEY_NEWS = System.getenv("NEWS");
     private static final getKeywords CLEAN = new getKeywords();
     private static final Logger logger = LoggerFactory.getLogger(newsAPI.class);
 
