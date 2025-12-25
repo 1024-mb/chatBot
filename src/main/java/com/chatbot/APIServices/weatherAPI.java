@@ -17,7 +17,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class weatherAPI {
-    private static final String API_KEY_WEATHER = "7eS832Ldvfmt36Drluj20AJc3u1F5bDE";
+    private static final String API_KEY_WEATHER = "####";
     private static final Logger logger = LoggerFactory.getLogger(weatherAPI.class);
 
     public void getData() {
