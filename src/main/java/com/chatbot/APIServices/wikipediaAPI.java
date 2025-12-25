@@ -23,7 +23,7 @@ import java.util.stream.Collectors;
 
 public class wikipediaAPI {
     private static final String ENCODING = "UTF-8";
-    private static final String TOKEN = "4898cf977e54986f1d4a1423049350b193cd382ac45dc87c0d6389ebdd739cfbabb968c7ad03f21cdbc4872017bc43f9";
+    private static final String TOKEN = System.getenv("TOKEN");
     private static final Logger logger = LoggerFactory.getLogger(wikipediaAPI.class);
     private static final getKeywords getKeywords = new getKeywords();
 
