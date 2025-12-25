@@ -27,7 +27,7 @@ import java.time.LocalTime;
 import java.util.ArrayList;
 
 public class flightAPI {
-    private static final String API_KEY_AIRPORT = "8a9dfd7702d619db68a7b663495b29d7";
+    private static final String API_KEY_AIRPORT = System.getenv("AIRPORT");
     private static final getKeywords GET_KEYWORDS = new getKeywords();
     private static final Logger logger = LoggerFactory.getLogger(flightAPI.class);
 
